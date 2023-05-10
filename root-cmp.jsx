@@ -1,6 +1,6 @@
 const { Route, Routes } = ReactRouterDOM
 const Router = ReactRouterDOM.HashRouter
-
+const kfir = 'omer'
 import { AppHeader } from "./cmps/app-header.jsx"
 import { About } from "./views/about.jsx"
 import { Home } from "./views/home.jsx"
