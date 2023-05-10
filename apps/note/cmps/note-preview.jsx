@@ -8,19 +8,9 @@ import { noteService } from "../services/note.service.js"
 import { utilService } from "../../../services/util.service.js"
 
 
-export function NotePreview({note, onRemoveNote}){
+export function NotePreview({note, onRemoveNote, onDuplicateNote}){
     const [color, setColor] = useState(noteService.get(note.id))
     const [isTooltipOpen, setIsTooltipOpen] = useState(false)
-
-    function handleDuplicateNote() {
-        const duplicatedNote = {
-          ...note,
-          id: utilService.makeId(),
-          createdAt: new Date(),
-        }
-        console.log(duplicatedNote);
-        noteService.save(duplicatedNote)
-    }
 
     function handleTooltipToggle() {
         setIsTooltipOpen(!isTooltipOpen)
@@ -45,13 +35,14 @@ export function NotePreview({note, onRemoveNote}){
     <article className="note-preview">
         {noteType(note)}
         <p className="content">{note.content}</p>
+        <p>{note.id}</p>
         <div className="tooltip">
             <button className="menu-icon" onClick={handleTooltipToggle}>
             <i className="fas fa-ellipsis-h"></i>
             </button>
             {isTooltipOpen && (
             <div className="tooltip-menu">
-                <button onClick={handleDuplicateNote}>Duplicate</button>
+                <button onClick={() => onDuplicateNote(note)}>Duplicate</button>
                 {/* <button onClick={handleChangeColor}>Change color</button> */}
                 {/* <button onClick={handleSendEmail}>Send via email</button> */}
             </div>
