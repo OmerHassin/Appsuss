@@ -2,8 +2,8 @@ import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect, useRef } = React
 
-export function NoteTxt({note}) {
-    return <section className="note-txt" >
+export function NoteVideo({note}) {
+    return <section className="note-video" >
         <p>{note.info.txt}</p>
         <p>{note.type}</p>
     </section>
