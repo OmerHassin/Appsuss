@@ -3,6 +3,8 @@ const { useState, useEffect, useRef } = React
 import { NoteTxt } from "../cmps/note-txt.jsx";
 import { noteService } from "../services/note.service.js"
 
+const omer = 'omer'
+
 export function NotePreview({note, onRemoveNote}){
     return(
         <article className="note-preview">
