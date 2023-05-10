@@ -1,4 +1,4 @@
-import { MailFilter } from '../cmps/mail-filter.jsx';
+import { MailSearchFilter } from '../cmps/mail-search-filter.jsx';
 import { MailList } from '../cmps/mail-list.jsx';
 import { mailService } from '../services/mail.service.js';
 
