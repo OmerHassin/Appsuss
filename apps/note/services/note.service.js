@@ -14,7 +14,9 @@ export const noteService = {
 
 function query() {
     return storageService.query(NOTE_KEY)
-        .then(notes => notes)
+        .then(notes => {
+            return notes
+        })
 }
 
 function get(noteId) {
@@ -38,8 +40,62 @@ function getEmptyNote(type) {
     return {
         id: '',
         type,
-        title: 'Title',
-        txt: 'text',
-        label: "Important",
+        isPinned: false,
+        info: {
+            txt: 'insert text'
+        },
+        label: 'none',
+    }
+}
+
+function _createNotes() {
+    let notes = utilService.loadFromStorage(NOTE_KEY)
+
+    if (!notes || !notes.length){
+        const notes = [
+            {
+                id: 'n101',
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#00d'
+                },
+                info: {
+                    txt: 'Fullstack Me Baby!'
+                },
+                label: 'none',
+            },
+            {
+                id: 'n102',
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'http://some-img/me',
+                    title: 'Bobi and Me',
+                    txt: 'Fullstack Me Baby2!'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                },
+                label: 'none',
+            },
+            {
+                id: 'n103',
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [
+                        { txt: 'Driving license', doneAt: null },
+                        { txt: 'Coding power', doneAt: 187111111 }
+                    ],
+                    txt: 'Fullstack Me Baby3!'
+                },
+                label: 'none',
+            }   
+        ]
+
+        utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
