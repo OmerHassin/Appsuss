@@ -1,6 +1,10 @@
 import { utilService } from '../../../services/util.service.js';
 import { storageService } from '../../../services/async-storage.service.js';
 // import { storageService } from './storage.service.js';
+const loggedinUser = {
+  email: 'user@appsus.com',
+  fullname: 'Mahatma Appsus',
+};
 
 const EMAIL_KEY = 'emailDB';
 _createEmails();
@@ -15,30 +19,38 @@ export const mailService = {
   addReview,
   getNextMailId,
   getLastMailId,
-
-  // addGoogleBook,
 };
 
 function query(filterBy = {}) {
+  console.log(filterBy);
   return storageService.query(EMAIL_KEY).then((mails) => {
-    // if (filterBy.title) {
-    //   // const regExp = new RegExp(filterBy.title, 'i');
-    //   mails = mails.filter((mail) => mail.title.includes(filterBy.title));
-    //   console.log(filterBy.title, mails);
-    // }
-
-    // if (filterBy.price) {
-    //   mails = mails.filter((mail) => mail.listPrice.amount >= filterBy.price);
-    // }
-
-    // if (filterBy.sale === 'available') {
-    //   mails = mails.filter((mail) => mail.listPrice.isOnSale);
-    // } else if (filterBy.sale === 'sold') {
-    //   mails = mails.filter((mail) => !mail.listPrice.isOnSale);
-    // }
+    if (filterBy.txt) {
+      const filterText = filterBy.txt.toLowerCase();
+      mails = mails.filter(
+        (mail) =>
+          mail.subject.toLowerCase().includes(filterText) ||
+          mail.body.toLowerCase().includes(filterText) ||
+          mail.from.toLowerCase().includes(filterText)
+      );
+    }
     return mails;
   });
 }
+// if (filterBy.title) {
+//   // const regExp = new RegExp(filterBy.title, 'i');
+//   mails = mails.filter((mail) => mail.title.includes(filterBy.title));
+//   console.log(filterBy.title, mails);
+// }
+
+// if (filterBy.price) {
+//   mails = mails.filter((mail) => mail.listPrice.amount >= filterBy.price);
+// }
+
+// if (filterBy.sale === 'available') {
+//   mails = mails.filter((mail) => mail.listPrice.isOnSale);
+// } else if (filterBy.sale === 'sold') {
+//   mails = mails.filter((mail) => !mail.listPrice.isOnSale);
+// }
 
 function get(mailId) {
   return storageService.get(EMAIL_KEY, mailId);
@@ -48,20 +60,7 @@ function get(mailId) {
 function remove(mailId) {
   return storageService.remove(EMAIL_KEY, mailId);
 }
-// function addGoogleBook(book) {
-//   aSyncStorageService.query(EMAIL_KEY).then((books) => {
-//     if (books.find((item) => item.id === book.id)) {
-//       return;
-//     } else {
-//       book.listPrice = {
-//         amount: 100,
-//         isOnSale: false,
-//       };
-//       console.log(book);
-//       return storageService.post(EMAIL_KEY, book);
-//     }
-//   });
-// }
+
 function save(book) {
   if (book.id) {
     return storageService.put(EMAIL_KEY, book);
@@ -91,7 +90,7 @@ function addReview(bookId, review) {
 }
 
 function getDefaultFilter() {
-  return { id: '', subject: '', body: '', isRead: '', sentAt: '', removedAt: '', from: '', to: '' };
+  return { status: '', txt: '', isRead: '', isStared: '', lables: [] };
 }
 
 function getNextMailId(bookId) {
@@ -129,11 +128,11 @@ function _createEmails() {
         id: 'e102',
         subject: 'Reminder: Meeting Tomorrow',
         body: 'Just a friendly reminder that we have a meeting scheduled for tomorrow at 10am. Please come prepared with any necessary materials.',
-        isRead: false,
+        isRead: true,
         sentAt: 1620662400000,
         removedAt: null,
         from: 'manager@company.com',
-        to: 'employee1@company.com',
+        to: 'user@appsus.com',
       },
       {
         id: 'e103',
@@ -143,7 +142,7 @@ function _createEmails() {
         sentAt: 1643011200000,
         removedAt: null,
         from: 'sales@shop.com',
-        to: 'customer@email.com',
+        to: 'user@appsus.com',
       },
     ];
 

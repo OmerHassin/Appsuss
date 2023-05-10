@@ -1,3 +1,4 @@
+import { MailFilter } from '../cmps/mail-filter.jsx';
 import { MailList } from '../cmps/mail-list.jsx';
 import { mailService } from '../services/mail.service.js';
 
@@ -11,20 +12,20 @@ const { Link } = ReactRouterDOM;
 
 export function MailIndex() {
   const [mails, setMails] = useState([]);
-  //   const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter());
+  const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter());
 
   useEffect(() => {
     loadMails();
-  }, []);
+  }, [filterBy]);
 
   function loadMails() {
-    mailService.query().then((mails) => setMails(mails));
+    mailService.query(filterBy).then((mails) => setMails(mails));
   }
   console.log(mails);
 
-  //   function onSetFilter(filterBy) {
-  //     setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterBy }));
-  //   }
+  function onSetFilter(filterBy) {
+    setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterBy }));
+  }
 
   //   function onRemoveBook(bookId) {
   //     aSyncStorageService.remove(bookId).then(() => {
@@ -35,6 +36,7 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
+      <MailSearchFilter onSetFilter={onSetFilter} filterBy={filterBy} />
       <MailList mails={mails} />
     </section>
   );

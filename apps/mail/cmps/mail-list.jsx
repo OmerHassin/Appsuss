@@ -1,12 +1,16 @@
+import { MailPreview } from './mail-preview.jsx';
+
+const { Link } = ReactRouterDOM;
+
 export function MailList({ mails }) {
   return (
     <div>
       <ul>
         {mails.map((mail) => {
           return (
-            <li key={mail.id}>
-              {mail.from},{mail.subject}
-            </li>
+            <Link to={`/mail/${mail.id}`}>
+              <MailPreview mail={mail} />
+            </Link>
           );
         })}
       </ul>
