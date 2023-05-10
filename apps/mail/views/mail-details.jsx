@@ -11,7 +11,6 @@ export function MailDetails() {
   const [nextMailId, setNextMailId] = useState(null);
 
   const navigate = useNavigate();
-  console.log(mail, 'here!');
 
   function loadNextId() {
     mailService.getNextMailId(mailId).then(setNextMailId);

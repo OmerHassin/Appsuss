@@ -22,7 +22,6 @@ export const mailService = {
 };
 
 function query(filterBy = {}) {
-  console.log(filterBy);
   return storageService.query(EMAIL_KEY).then((mails) => {
     if (filterBy.txt) {
       const filterText = filterBy.txt.toLowerCase();
@@ -35,6 +34,9 @@ function query(filterBy = {}) {
     }
     if (filterBy.isRead) {
       mails = mails.filter((mail) => mail.isRead);
+    }
+    if (filterBy.isSent) {
+      mails = mails.filter((mail) => mail.isSent);
     }
     if (filterBy.isDraft) {
       mails = mails.filter((mail) => mail.isDraft);

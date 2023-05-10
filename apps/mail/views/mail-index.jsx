@@ -24,18 +24,17 @@ export function MailIndex() {
   function loadMails() {
     mailService.query(filterBy).then((mails) => setMails(mails));
   }
-  console.log(mails);
 
   function onSetFilter(filterBy) {
     setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterBy }));
   }
 
-  //   function onRemoveBook(bookId) {
-  //     aSyncStorageService.remove(bookId).then(() => {
-  //       const updatedBooks = mails.filter((book) => book.id !== bookId);
-  //       setMails(updatedBooks);
-  //       showSuccessMsg(`Book (${bookId}) removed!`);
-  //     });
+  // function onRemoveBook(bookId) {
+  //   aSyncStorageService.remove(bookId).then(() => {
+  //     const updatedBooks = mails.filter((book) => book.id !== bookId);
+  //     setMails(updatedBooks);
+  //     showSuccessMsg(`Book (${bookId}) removed!`);
+  //   });
 
   return (
     <section className="mail-index">

@@ -19,7 +19,8 @@ export function MailCompose({ setShowCompose }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    formData.isDraft = true;
+    formData.isSent = true;
+    formData.isRead = true;
     setShowCompose(false);
     mailService.save(formData).then(setShowCompose(false));
   }
