@@ -1,6 +1,8 @@
 import { MailSearchFilter } from '../cmps/mail-search-filter.jsx';
 import { MailList } from '../cmps/mail-list.jsx';
 import { mailService } from '../services/mail.service.js';
+import { MailBoxFilter } from '../cmps/mail-box-filter.jsx';
+import { MailCompose } from '../cmps/mail-compose.jsx';
 
 const { useEffect, useState } = React;
 const { Link } = ReactRouterDOM;
@@ -12,6 +14,7 @@ const { Link } = ReactRouterDOM;
 
 export function MailIndex() {
   const [mails, setMails] = useState([]);
+  const [showCompose, setShowCompose] = useState(false);
   const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter());
 
   useEffect(() => {
@@ -36,8 +39,13 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
+      <button onClick={() => setShowCompose((prevState) => !prevState)}>Compose</button>
       <MailSearchFilter onSetFilter={onSetFilter} filterBy={filterBy} />
-      <MailList mails={mails} />
+      <div className="list-filter-box-container">
+        <MailBoxFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+        <MailList mails={mails} />
+      </div>
+      {showCompose && <MailCompose setShowCompose={setShowCompose} />}
     </section>
   );
   //   onRemoveMail={onRemoveMail}

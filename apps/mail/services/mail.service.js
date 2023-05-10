@@ -33,24 +33,15 @@ function query(filterBy = {}) {
           mail.from.toLowerCase().includes(filterText)
       );
     }
+    if (filterBy.isRead) {
+      mails = mails.filter((mail) => mail.isRead);
+    }
+    if (filterBy.isDraft) {
+      mails = mails.filter((mail) => mail.isDraft);
+    }
     return mails;
   });
 }
-// if (filterBy.title) {
-//   // const regExp = new RegExp(filterBy.title, 'i');
-//   mails = mails.filter((mail) => mail.title.includes(filterBy.title));
-//   console.log(filterBy.title, mails);
-// }
-
-// if (filterBy.price) {
-//   mails = mails.filter((mail) => mail.listPrice.amount >= filterBy.price);
-// }
-
-// if (filterBy.sale === 'available') {
-//   mails = mails.filter((mail) => mail.listPrice.isOnSale);
-// } else if (filterBy.sale === 'sold') {
-//   mails = mails.filter((mail) => !mail.listPrice.isOnSale);
-// }
 
 function get(mailId) {
   return storageService.get(EMAIL_KEY, mailId);
@@ -61,13 +52,8 @@ function remove(mailId) {
   return storageService.remove(EMAIL_KEY, mailId);
 }
 
-function save(book) {
-  if (book.id) {
-    return storageService.put(EMAIL_KEY, book);
-  } else {
-    console.log('added', book);
-    return storageService.post(EMAIL_KEY, book);
-  }
+function save(mail) {
+  return storageService.post(EMAIL_KEY, mail);
 }
 
 function getEmptyBook(title = '', price = '') {
@@ -90,7 +76,7 @@ function addReview(bookId, review) {
 }
 
 function getDefaultFilter() {
-  return { status: '', txt: '', isRead: '', isStared: '', lables: [] };
+  return { status: '', txt: '', isRead: '', isStared: '', lables: [], isDraft: false };
 }
 
 function getNextMailId(bookId) {
