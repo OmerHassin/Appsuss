@@ -10,11 +10,22 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
+    getDefaultFilter
 }
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     return storageService.query(NOTE_KEY)
         .then(notes => {
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                notes = notes.filter(note => regex.test(note.info.txt))
+            }
+
+            if (filterBy.type){
+                notes = notes.filter(note => note.type === filterBy.type)
+            }
+
+            console.log(notes);
             return notes
         })
 }
@@ -29,11 +40,11 @@ function remove(noteId) {
 }
 
 function save(note) {
-    if (note.id) {
-        return storageService.put(NOTE_KEY, note)
-    } else {
-        return storageService.post(NOTE_KEY, note)
-    }
+    // if (note.id) {
+    //     return storageService.put(NOTE_KEY, note)
+    // } else {
+    // }
+    return storageService.post(NOTE_KEY, note)
 }
 
 function getEmptyNote(type) {
@@ -46,6 +57,10 @@ function getEmptyNote(type) {
         },
         label: 'none',
     }
+}
+
+function getDefaultFilter() {
+    return { txt: '', type: ''}
 }
 
 function _createNotes() {
@@ -62,7 +77,7 @@ function _createNotes() {
                     backgroundColor: '#00d'
                 },
                 info: {
-                    txt: 'Fullstack Me Baby!'
+                    txt: 'Omer'
                 },
                 label: 'none',
             },
@@ -90,7 +105,7 @@ function _createNotes() {
                         { txt: 'Driving license', doneAt: null },
                         { txt: 'Coding power', doneAt: 187111111 }
                     ],
-                    txt: 'Fullstack Me Baby3!'
+                    txt: 'todo me'
                 },
                 label: 'none',
             }   
