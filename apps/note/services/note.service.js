@@ -22,7 +22,8 @@ function query(filterBy = getDefaultFilter()) {
             }
 
             if (filterBy.type){
-                notes = notes.filter(note => note.type === filterBy.type)
+                const regex = new RegExp(filterBy.type, 'i')
+                notes = notes.filter(note => regex.test(note.type))
             }
 
             console.log(notes);
@@ -60,6 +61,7 @@ function getEmptyNote(type) {
         id: '',
         type,
         isPinned: false,
+        backgroundColor: 'whitesmoke',
         info: {
             txt: 'insert text'
         },
@@ -81,9 +83,10 @@ function _createNotes() {
                 createdAt: 1112222,
                 type: 'txt',
                 isPinned: true,
-                backgroundColor: 'whitesmoke',
+                backgroundColor: '#FFF475',
                 info: {
-                    txt: 'Omer'
+                    title: 'Sample Text',
+                    txt: 'This is a sample text note. You can write your notes here and keep them organized. Feel free to customize the background color, pin the note, and add labels to stay organized. Happy note-taking!'
                 },
                 label: 'none',
             },
@@ -92,11 +95,11 @@ function _createNotes() {
                 type: 'img',
                 isPinned: false,
                 info: {
-                    url: 'http://some-img/me',
+                    url: "./assets/img/audi.jpg",
                     title: 'Bobi and Me',
                     txt: 'Fullstack Me Baby2!'
                 },
-                backgroundColor: 'white',
+                backgroundColor: '#FBBC05',
                 label: 'none',
             },
             {
@@ -111,9 +114,21 @@ function _createNotes() {
                     ],
                     txt: 'todo me'
                 },
-                backgroundColor: 'red',
+                backgroundColor: '#CCFF90',
                 label: 'none',
-            }   
+            },
+            {
+                id: 'n104',
+                type: 'video',
+                isPinned: false,
+                info: {
+                    url: 'https://www.youtube.com/watch?v=NxXXSgwdLmU&ab_channel=BrianLagerstrom',
+                    title: 'Beef and Brocoli',
+                    txt: 'Great recipe kfir sent me'
+                },
+                backgroundColor: '#F28B82',
+                label: 'none',
+            },
         ]
 
         utilService.saveToStorage(NOTE_KEY, notes)
