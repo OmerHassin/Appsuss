@@ -2,6 +2,7 @@ import { noteService } from "../services/note.service.js"
 import { NoteList } from "../cmps/note-list.jsx"
 import { NoteFilter } from "../cmps/note-filter.jsx"
 import { utilService } from "../../../services/util.service.js"
+import { NoteAdd } from "../cmps/note-add.jsx"
 
 const { useState, useEffect } = React
 
@@ -58,7 +59,7 @@ export function NoteIndex() {
     return (
         <section className="note-index">
             <NoteFilter onSetFilter={onSetFilter} />
-
+            <NoteAdd setNotes={setNotes}></NoteAdd>
             <NoteList notes={notes} onRemoveNote={onRemoveNote} onDuplicateNote={onDuplicateNote}></NoteList>
 
             {!notes.length && <div>Your note list is empty</div>}

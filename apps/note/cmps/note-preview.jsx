@@ -41,6 +41,15 @@ export function NotePreview({note, onRemoveNote, onDuplicateNote}) {
     <article className="note-preview" style={{ backgroundColor: color }}>
       {DynamicNoteType(note)}
       <section className="tooltip-menu">
+        {isColorPickerOpen && (
+          <div className={`color-picker ${isColorPickerOpen ? 'open' : ''}`}>
+            <button className="color-btn" style={{ backgroundColor: '#FBBC05' }} onClick={() => handleChangeNoteColor('#FBBC05')}></button>
+            <button className="color-btn" style={{ backgroundColor: '#FFF475' }} onClick={() => handleChangeNoteColor('#FFF475')}></button>
+            <button className="color-btn" style={{ backgroundColor: '#CCFF90' }} onClick={() => handleChangeNoteColor('#CCFF90')}></button>
+            <button className="color-btn" style={{ backgroundColor: '#F28B82' }} onClick={() => handleChangeNoteColor('#F28B82')}></button>
+            <button className="color-btn" style={{ backgroundColor: '#FDCFE8' }} onClick={() => handleChangeNoteColor('#FDCFE8')}></button>
+            <button className="color-btn" style={{ backgroundColor: '#CBF0F8' }} onClick={() => handleChangeNoteColor('#CBF0F8')}></button>
+          </div>)}
         <button className="tooltip-btn" onClick={() => onDuplicateNote(note)}>
           <i className="fas fa-copy"></i>
         </button>
@@ -50,16 +59,6 @@ export function NotePreview({note, onRemoveNote, onDuplicateNote}) {
         <button className="tooltip-btn" onClick={() => onRemoveNote(note.id)}>
           <i className="fas fa-trash-alt"></i>
         </button>
-        {isColorPickerOpen && (
-          <div className={`color-picker ${isColorPickerOpen ? 'open' : ''}`}>
-            <button className="color-btn" style={{ backgroundColor: '#FBBC05' }} onClick={() => handleChangeNoteColor('#FBBC05')}></button>
-            <button className="color-btn" style={{ backgroundColor: '#FFF475' }} onClick={() => handleChangeNoteColor('#FFF475')}></button>
-            <button className="color-btn" style={{ backgroundColor: '#CCFF90' }} onClick={() => handleChangeNoteColor('#CCFF90')}></button>
-            <button className="color-btn" style={{ backgroundColor: '#F28B82' }} onClick={() => handleChangeNoteColor('#F28B82')}></button>
-            <button className="color-btn" style={{ backgroundColor: '#FDCFE8' }} onClick={() => handleChangeNoteColor('#FDCFE8')}></button>
-            <button className="color-btn" style={{ backgroundColor: '#CBF0F8' }} onClick={() => handleChangeNoteColor('#CBF0F8')}></button>
-          </div>
-        )}
       </section>
     </article>
   )

@@ -1,32 +1,30 @@
 .note-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: space-between;
-  }
-  
-  .note-preview {
-    width: calc(50% - 8px);
-    min-width: 180px;
-    max-width: 400px;
-  }
+  /* display: flex;
+  flex-wrap: wrap;
+  gap: 16px; */
+  /* justify-content: space-between; */
+  columns: 180px auto;
+  padding: 0;
+  /* padding: 0 10px; */
 
-  .note-list li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--clr1bg);
 }
-  
-  @media (min-width: 768px) {
-    .note-preview {
-      width: calc(33.33% - 10px);
-    }
+
+
+.note-list li {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; */
+}
+
+@media (min-width: 768px) {
+  .note-preview {
+    /* width: 33%; */
   }
-  
-  @media (min-width: 1024px) {
-    .note-preview {
-      width: calc(25% - 12px);
-    }
+}
+
+@media (min-width: 1024px) {
+  .note-preview {
+    /* width: 25%; */
   }
+}
