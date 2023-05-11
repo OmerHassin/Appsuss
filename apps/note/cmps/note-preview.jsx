@@ -9,6 +9,7 @@ const { useState, useEffect, useRef } = React
 
 export function NotePreview({note, onRemoveNote, onDuplicateNote}) {
   const [color, setColor] = useState(note.backgroundColor)
+  const [isPinned, setIsPinned] = useState(note.isPinned)
   const [isColorPickerOpen, setIsColorPickerOpen] = useState(false)
 
   const colorRef = useRef(color);
@@ -25,6 +26,13 @@ export function NotePreview({note, onRemoveNote, onDuplicateNote}) {
     }
   }
 
+  function handlePinToggle() {
+    const updatedIsPinned = !isPinned
+    setIsPinned(updatedIsPinned)
+    note.isPinned = updatedIsPinned
+    noteService.save(note)
+  }  
+
   function handleChangeNoteColor(color) {
     setColor(color)
     colorRef.current = color
@@ -39,6 +47,9 @@ export function NotePreview({note, onRemoveNote, onDuplicateNote}) {
 
   return (
     <article className="note-preview" style={{ backgroundColor: color }}>
+      <button className="tooltip-btn" onClick={handlePinToggle}>
+        <i className={`fas fa-thumbtack${isPinned ? ' pinned' : ''}`}></i>
+      </button>
       {DynamicNoteType(note)}
       <section className="tooltip-menu">
         {isColorPickerOpen && (

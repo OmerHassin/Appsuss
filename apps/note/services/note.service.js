@@ -26,8 +26,12 @@ function query(filterBy = getDefaultFilter()) {
                 notes = notes.filter(note => regex.test(note.type))
             }
 
-            console.log(notes);
-            return notes
+            const pinnedNotes = notes.filter(note => note.isPinned)
+            const unpinnedNotes = notes.filter(note => !note.isPinned)
+            const sortedNotes = pinnedNotes.concat(unpinnedNotes)
+
+            console.log(sortedNotes);
+            return sortedNotes
         })
 }
 
@@ -63,6 +67,7 @@ function getEmptyNote(type) {
         isPinned: false,
         backgroundColor: 'whitesmoke',
         info: {
+            title: 'insert title',
             txt: 'insert text'
         },
         label: 'none',
@@ -155,14 +160,53 @@ function _createNotes() {
             },
             {
                 id: 'n107',
+                type: 'video',
+                isPinned: false,
+                info: {
+                    url: 'https://www.youtube.com/watch?v=NxXXSgwdLmU&ab_channel=BrianLagerstrom',
+                    title: 'Fantasy Premier League!',
+                    txt: 'Winning tips for the premier league season!'
+                },
+                backgroundColor: '#F28B82',
+                label: 'none',
+            },
+            {
+                id: 'n108',
                 createdAt: 1112222,
                 type: 'txt',
                 isPinned: true,
                 backgroundColor: '#FFF475',
                 info: {
-                    title: 'Sample Text',
-                    txt: 'This is a sample text note. You can write your notes here and keep them organized. Feel free to customize the background color, pin the note, and add labels to stay organized. Happy note-taking!'
+                    title: 'FIFA 23 Patch #12',
+                    txt: 'FIFA 23 patch #12 is available today for Xbox Series X|S, PlayStation 5 and PC addressing some issues in FIFA Ultimate Team, Pro Clubs, VOLTA Football and more. Check out the patch notes below.'
                 },
+                label: 'none',
+            },
+            {
+                id: 'n109',
+                type: 'todos',
+                isPinned: false,
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [
+                        { txt: 'Driving license', doneAt: null },
+                        { txt: 'Coding power', doneAt: 187111111 }
+                    ],
+                    txt: 'todo me'
+                },
+                backgroundColor: '#CCFF90',
+                label: 'none',
+            },
+            {
+                id: 'n110',
+                type: 'img',
+                isPinned: false,
+                info: {
+                    url: "https://www.operationsports.com/wp-content/uploads/2023/05/fifa-23.png?w=1024",
+                    title: 'city vs madrid',
+                    txt: 'draw 1-1'
+                },
+                backgroundColor: '#FBBC05',
                 label: 'none',
             }
         ]
