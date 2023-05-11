@@ -2,15 +2,9 @@ import { mailService } from '../services/mail.service.js';
 
 const { useState } = React;
 const { Link } = ReactRouterDOM;
-export function MailPreview({ mail }) {
+export function MailPreview({ mail, onHandleDelete, onHandleStar }) {
   const [hover, setHover] = useState(false);
-  function handleDelete(mailId) {
-    mailService.deleteToTrash(mailId);
-  }
-  function handleStar(mail) {
-    const updatedMail = { ...mail, isStared: !mail.isStared };
-    mailService.save(updatedMail);
-  }
+
   return (
     <li
       className={`mail-item ${mail.isRead ? 'mail-read' : ''} ${hover ? 'list-item-hover' : ''}`}
@@ -22,9 +16,9 @@ export function MailPreview({ mail }) {
       }}
     >
       {mail.isStared ? (
-        <i class="fa-solid fa-star golden-star" onClick={() => handleStar(mail)}></i>
+        <i className="fa-solid fa-star golden-star" onClick={() => onHandleStar(mail)}></i>
       ) : (
-        <i class="fa-regular fa-star" onClick={() => handleStar(mail)}></i>
+        <i className="fa-regular fa-star" onClick={() => onHandleStar(mail)}></i>
       )}
       <Link to={`/mail/${mail.id}`}>
         {mail.from}
@@ -33,7 +27,7 @@ export function MailPreview({ mail }) {
       </Link>
       {hover && (
         // <button onClick={() => handleDelete(mail.id)}>
-        <i className="fa-regular fa-trash-can" onClick={() => handleDelete(mail.id)}></i>
+        <i className="fa-regular fa-trash-can" onClick={() => onHandleDelete(mail.id)}></i>
         // </button>
       )}
     </li>

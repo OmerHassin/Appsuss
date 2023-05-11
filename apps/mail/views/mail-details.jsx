@@ -45,6 +45,7 @@ export function MailDetails() {
         <p>To: {mail.to}</p>
         <p>{new Date(mail.sentAt).toLocaleString()}</p>
       </div>
+      <i className="fa-solid fa-arrow-left" onClick={() => onBack()}></i>
       <p>{mail.body}</p>
     </div>
   );
