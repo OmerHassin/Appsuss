@@ -22,7 +22,7 @@ export function MailPreview({ mail, onHandleDelete, onHandleStar }) {
       {mail.isStared ? (
         <i className="fa-solid fa-star golden-star" onClick={() => onHandleStar(mail)}></i>
       ) : (
-        <i className="fa-regular fa-star" onClick={() => onHandleStar(mail)}></i>
+        <i className="fa-regular fa-star mail-star" onClick={() => onHandleStar(mail)}></i>
       )}
       <Link to={`/mail/${mail.id}`}>
         <div className="mail-index-from">{mail.from}</div>
@@ -32,7 +32,7 @@ export function MailPreview({ mail, onHandleDelete, onHandleStar }) {
       </Link>
       {hover && (
         // <button onClick={() => handleDelete(mail.id)}>
-        <i className="fa-regular fa-trash-can" onClick={() => onHandleDelete(mail.id)}></i>
+        <i className="fa-regular fa-trash-can mail-trash" onClick={() => onHandleDelete(mail.id)}></i>
         // </button>
       )}
     </li>
