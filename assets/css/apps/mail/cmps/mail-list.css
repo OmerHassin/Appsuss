@@ -5,7 +5,7 @@
   font-weight: 400 !important;
 }
 .list-item-hover {
-  background-color: red;
+  background-color: rgb(0, 166, 255);
 }
 ul {
   list-style-type: none;

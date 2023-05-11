@@ -17,8 +17,7 @@ export function MailSearchFilter({ filterBy, onSetFilter }) {
   const { txt } = filterByToEdit;
   return (
     <section className="mail-filter">
-      <label htmlFor="name">Name:</label>
-      <input value={txt} onChange={handleChange} name="txt" id="txt" type="text" placeholder="By txt" />
+      <input value={txt} onChange={handleChange} name="txt" id="txt" type="text" placeholder="Search" />
     </section>
   );
 }
