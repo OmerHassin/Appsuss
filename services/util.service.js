@@ -8,6 +8,7 @@ export const utilService = {
   getMonthName,
   saveToStorage,
   loadFromStorage,
+  getMailDate,
 };
 
 function makeId(length = 6) {
@@ -105,6 +106,37 @@ function getMonthName(date) {
   ];
   return monthNames[date.getMonth()];
 }
+
+function getMailDate(date) {
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const now = new Date();
+  const diff = now - date;
+
+  if (diff > 365 * 24 * 60 * 60 * 1000) {
+    // If the date is over a year ago
+    return date.getFullYear().toString(); // Return just the year number
+  } else {
+    // Otherwise, return the month name and day number
+    const dayNumber = date.getDate();
+    const monthName = monthNames[date.getMonth()];
+    return `${monthName} ${dayNumber}`;
+  }
+}
+
 function saveToStorage(key, val) {
   localStorage.setItem(key, JSON.stringify(val));
 }

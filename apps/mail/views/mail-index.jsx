@@ -31,13 +31,6 @@ export function MailIndex() {
   function loadMails() {
     mailService.query(filterBy).then((mails) => setMails(mails));
   }
-  function onRemoveBook(bookId) {
-    bookService.remove(bookId).then(() => {
-      const updatedBooks = books.filter((book) => book.id !== bookId);
-      setBooks(updatedBooks);
-      showSuccessMsg(`Book (${bookId}) removed!`);
-    });
-  }
 
   function onSetFilter(filterBy) {
     setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterBy }));
@@ -45,12 +38,17 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
-      <button onClick={() => setShowCompose((prevState) => !prevState)}>Compose</button>
-      <MailSearchFilter onSetFilter={onSetFilter} filterBy={filterBy} />
-      <div className="list-filter-box-container">
+      <div className="compose-filter-box-container">
+        <button onClick={() => setShowCompose((prevState) => !prevState)} className="compose-btn">
+          Compose
+        </button>
         <MailBoxFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+      </div>
+      <div className="search-list-container">
+        <MailSearchFilter onSetFilter={onSetFilter} filterBy={filterBy} />
         <MailList mails={mails} onHandleDelete={onHandleDelete} onHandleStar={onHandleStar} />
       </div>
+
       {showCompose && <MailCompose setShowCompose={setShowCompose} />}
     </section>
   );

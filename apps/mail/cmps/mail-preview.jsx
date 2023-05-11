@@ -1,10 +1,14 @@
+import { utilService } from '../../../services/util.service.js';
 import { mailService } from '../services/mail.service.js';
 
 const { useState } = React;
 const { Link } = ReactRouterDOM;
 export function MailPreview({ mail, onHandleDelete, onHandleStar }) {
   const [hover, setHover] = useState(false);
+  const timestamp = mail.sentAt;
+  const date = new Date(timestamp);
 
+  const mailDateString = utilService.getMailDate(date); // Returns the month name (e.g. "February")
   return (
     <li
       className={`mail-item ${mail.isRead ? 'mail-read' : ''} ${hover ? 'list-item-hover' : ''}`}
@@ -21,9 +25,10 @@ export function MailPreview({ mail, onHandleDelete, onHandleStar }) {
         <i className="fa-regular fa-star" onClick={() => onHandleStar(mail)}></i>
       )}
       <Link to={`/mail/${mail.id}`}>
-        {mail.from}
-        {mail.subject}
-        {mail.body}
+        <div className="mail-index-from">{mail.from}</div>
+        <div className="mail-index-subject">{mail.subject}</div>
+        {/* <div>{mail.body}</div> */}
+        {mailDateString}
       </Link>
       {hover && (
         // <button onClick={() => handleDelete(mail.id)}>
