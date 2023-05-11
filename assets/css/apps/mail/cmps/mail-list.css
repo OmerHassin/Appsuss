@@ -6,3 +6,9 @@
 .list-item-hover {
   background-color: red;
 }
+ul {
+  list-style-type: none;
+}
+.golden-star {
+  color: rgb(254, 254, 43);
+}

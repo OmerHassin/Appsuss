@@ -15,10 +15,9 @@ export const mailService = {
   remove,
   save,
   getDefaultFilter,
-  getEmptyBook,
-  addReview,
   getNextMailId,
   getLastMailId,
+  deleteToTrash,
 };
 
 function query(filterBy = {}) {
@@ -38,8 +37,17 @@ function query(filterBy = {}) {
     if (filterBy.isSent) {
       mails = mails.filter((mail) => mail.isSent);
     }
+    if (filterBy.isStared) {
+      mails = mails.filter((mail) => mail.isStared);
+    }
     if (filterBy.isDraft) {
       mails = mails.filter((mail) => mail.isDraft);
+    }
+    if (!filterBy.removedAt) {
+      mails = mails.filter((mail) => !mail.removedAt);
+    }
+    if (filterBy.removedAt) {
+      mails = mails.filter((mail) => mail.removedAt);
     }
     return mails;
   });
@@ -53,32 +61,35 @@ function get(mailId) {
 function remove(mailId) {
   return storageService.remove(EMAIL_KEY, mailId);
 }
-
-function save(mail) {
-  return storageService.post(EMAIL_KEY, mail);
-}
-
-function getEmptyBook(title = '', price = '') {
-  return {
-    id: '',
-    title,
-    listPrice: {
-      amount: price,
-    },
-  };
-}
-function addReview(bookId, review) {
-  storageService.get(EMAIL_KEY, bookId).then((currentBook) => {
-    if (!currentBook.reviews) {
-      currentBook.reviews = []; // Create the reviews array if it doesn't exist yet
+function deleteToTrash(mailId) {
+  return storageService.query(EMAIL_KEY).then((mails) => {
+    const toTrashMail = mails.find((mail) => mail.id === mailId);
+    if (!toTrashMail.removedAt) {
+      toTrashMail.removedAt = new Date();
+      return storageService.put(EMAIL_KEY, toTrashMail);
     }
-    currentBook.reviews.push(review);
-    save(currentBook);
+    remove(mailId);
   });
 }
+function save(mail) {
+  return storageService
+    .query(EMAIL_KEY)
+    .then((mails) => {
+      const existingMail = mails.find((item) => item.id === mail.id);
+      if (existingMail) {
+        return storageService.put(EMAIL_KEY, mail);
+      } else {
+        return storageService.post(EMAIL_KEY, mail);
+      }
+    })
+    .catch((error) => {
+      console.error('Error while saving email:', error);
+    });
+}
 
-function getDefaultFilter() {
-  return { status: '', txt: '', isRead: '', isStared: '', lables: [], isDraft: false };
+function getDefaultFilter(change) {
+  const defaultFilter = { status: '', txt: '', isRead: '', isStared: '', lables: [], isDraft: false, removedAt: false, isSent: false };
+  return { ...defaultFilter, ...change };
 }
 
 function getNextMailId(bookId) {
