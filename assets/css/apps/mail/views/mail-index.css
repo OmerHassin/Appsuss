@@ -34,11 +34,28 @@
   width: 100%;
 }
 .mail-index {
+  background-color: rgb(236, 251, 255);
   font-family: sans-serif;
   display: grid;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 10% 1fr;
 }
 .compose-btn {
   width: 100%;
   margin-block-end: 20px;
+}
+.mail-filter {
+  margin-inline-start: 2.5rem;
+}
+/* .compose-filter-box-container {
+  background-color: rgb(236, 251, 255);
+} */
+.active-btn {
+  background-color: rgb(206, 225, 255) !important;
+}
+.compose-filter-box-container button {
+  background-color: rgb(236, 251, 255);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  height: 2rem;
 }
