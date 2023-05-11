@@ -1,25 +1,30 @@
 .note-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    /* justify-content: space-between; */
-  }
+  /* display: flex;
+  flex-wrap: wrap;
+  gap: 16px; */
+  /* justify-content: space-between; */
+  columns: 180px auto;
+  padding: 0;
+  /* padding: 0 10px; */
 
-  .note-list li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
 }
-  
-  @media (min-width: 768px) {
-    .note-preview {
-      width: 33%;
-    }
+
+
+.note-list li {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; */
+}
+
+@media (min-width: 768px) {
+  .note-preview {
+    /* width: 33%; */
   }
-  
-  @media (min-width: 1024px) {
-    .note-preview {
-      width: 25%;
-    }
+}
+
+@media (min-width: 1024px) {
+  .note-preview {
+    /* width: 25%; */
   }
+}

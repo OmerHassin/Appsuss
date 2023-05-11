@@ -129,6 +129,42 @@ function _createNotes() {
                 backgroundColor: '#F28B82',
                 label: 'none',
             },
+            {
+                id: 'n105',
+                type: 'video',
+                isPinned: false,
+                info: {
+                    url: 'https://www.youtube.com/watch?v=NxXXSgwdLmU&ab_channel=BrianLagerstrom',
+                    title: 'Beef and Brocoli',
+                    txt: 'Great recipe kfir sent me'
+                },
+                backgroundColor: '#F28B82',
+                label: 'none',
+            },
+            {
+                id: 'n106',
+                type: 'img',
+                isPinned: false,
+                info: {
+                    url: "https://www.google.com/search?q=fpl+fantasy&tbm=isch&sxsrf=APwXEdf5LpB8xBtX9UNNUa1IRUg2HHFR4w:1683812817667&source=lnms&sa=X&ved=2ahUKEwjT1PXGs-3-AhULqaQKHfyND0sQ_AUoAnoECAEQBA&biw=1124&bih=919&dpr=1#imgrc=N4YuYRg0ewt72M",
+                    title: 'Bobi and Me',
+                    txt: 'My pet'
+                },
+                backgroundColor: '#FBBC05',
+                label: 'none',
+            },
+            {
+                id: 'n107',
+                createdAt: 1112222,
+                type: 'txt',
+                isPinned: true,
+                backgroundColor: '#FFF475',
+                info: {
+                    title: 'Sample Text',
+                    txt: 'This is a sample text note. You can write your notes here and keep them organized. Feel free to customize the background color, pin the note, and add labels to stay organized. Happy note-taking!'
+                },
+                label: 'none',
+            }
         ]
 
         utilService.saveToStorage(NOTE_KEY, notes)
