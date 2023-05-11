@@ -2,13 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    justify-content: space-between;
-  }
-  
-  .note-preview {
-    width: calc(50% - 8px);
-    min-width: 180px;
-    max-width: 400px;
+    /* justify-content: space-between; */
   }
 
   .note-list li {
@@ -16,17 +10,16 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--clr1bg);
 }
   
   @media (min-width: 768px) {
     .note-preview {
-      width: calc(33.33% - 10px);
+      width: 33%;
     }
   }
   
   @media (min-width: 1024px) {
     .note-preview {
-      width: calc(25% - 12px);
+      width: 25%;
     }
   }

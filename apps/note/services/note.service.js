@@ -58,7 +58,7 @@ function save(note) {
 
 function getEmptyNote(type) {
     return {
-        id: '',
+        id: utilService.makeId(),
         type,
         isPinned: false,
         backgroundColor: 'whitesmoke',
@@ -95,7 +95,7 @@ function _createNotes() {
                 type: 'img',
                 isPinned: false,
                 info: {
-                    url: "./assets/img/audi.jpg",
+                    url: "https://www.google.com/search?q=fpl+fantasy&tbm=isch&sxsrf=APwXEdf5LpB8xBtX9UNNUa1IRUg2HHFR4w:1683812817667&source=lnms&sa=X&ved=2ahUKEwjT1PXGs-3-AhULqaQKHfyND0sQ_AUoAnoECAEQBA&biw=1124&bih=919&dpr=1#imgrc=N4YuYRg0ewt72M",
                     title: 'Bobi and Me',
                     txt: 'Fullstack Me Baby2!'
                 },
