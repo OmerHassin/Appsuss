@@ -32,16 +32,16 @@ export function NoteIndex() {
           createdAt: new Date(),
         };
       
-        console.log(duplicatedNote);
+        console.log(duplicatedNote)
       
         noteService
           .save(duplicatedNote)
           .then((res) => {
-            setNotes(prevNotes => [...prevNotes, res]);
+            setNotes(prevNotes => [...prevNotes, res])
           })
           .catch(err => {
-            console.log('Had issues posting note', err);
-          });
+            console.log('Had issues posting note', err)
+          })
       }
 
     function onRemoveNote(noteId) {
