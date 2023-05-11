@@ -35,7 +35,7 @@ export function NoteAdd({ setNotes }) {
   
     return (
       <form className="note-add" onSubmit={handleNoteAdd}>
-        <div className="note-add-input-wrapper">
+        <div className="note-add-input-container">
           <input
             type="text"
             placeholder="Enter a new note title"
