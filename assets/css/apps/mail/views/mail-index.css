@@ -30,14 +30,13 @@
   height: 100%;
   width: 97%;
 }
-.mail-list {
-  width: 100%;
-}
+
 .mail-index {
-  background-color: rgb(236, 251, 255);
+  background-color: #f7f8fc;
   font-family: sans-serif;
   display: grid;
   grid-template-columns: 10% 1fr;
+  height: 100vh;
 }
 .compose-btn {
   width: 100%;
@@ -52,10 +51,26 @@
 .active-btn {
   background-color: rgb(206, 225, 255) !important;
 }
+.box-filter div i {
+  margin-inline-end: 0.75rem;
+}
 .compose-filter-box-container button {
-  background-color: rgb(236, 251, 255);
+  background-color: #f7f8fc;
   border: none;
   cursor: pointer;
   text-align: left;
   height: 2rem;
+}
+.box-filter button {
+  display: flex;
+  justify-content: space-between;
+  padding-inline-start: 1.5rem;
+  border-radius: 20px;
+  align-items: center;
+}
+.box-filter {
+  width: 170px;
+}
+.box-star {
+  margin-inline-end: 10px !important;
 }

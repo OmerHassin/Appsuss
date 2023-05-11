@@ -24,7 +24,7 @@ export function MailIndex() {
   function onHandleStar(mail) {
     const updatedMail = { ...mail, isStared: !mail.isStared };
     mailService.save(updatedMail).then((updated) => {
-      setMails((prevMails) => prevMails.map((m) => (m.id === updated.id ? updated : m)));
+      setMails((prevMails) => prevMails.map((mail) => (mail.id === updated.id ? updated : mail)));
       console.log(`Mail (${updated.id}) updated:`, updated);
     });
   }

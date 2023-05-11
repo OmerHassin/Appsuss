@@ -34,7 +34,10 @@ export function MailBoxFilter({ filterBy, onSetFilter }) {
           setActiveButton('inbox');
         }}
       >
-        <i className="fa-solid fa-inbox"></i> Inbox ({inboxCount})
+        <div>
+          <i className="fa-solid fa-inbox"></i>Inbox
+        </div>
+        <span>{inboxCount}</span>
       </button>
       <button
         className={activeButton === 'starred' ? 'active-btn' : ''}
@@ -43,7 +46,9 @@ export function MailBoxFilter({ filterBy, onSetFilter }) {
           setActiveButton('starred');
         }}
       >
-        <i className="fa-regular fa-star"></i> Starred
+        <div>
+          <i className="fa-regular fa-star box-star"></i>Starred
+        </div>
       </button>
       <button
         className={activeButton === 'read' ? 'active-btn' : ''}
@@ -52,7 +57,9 @@ export function MailBoxFilter({ filterBy, onSetFilter }) {
           setActiveButton('read');
         }}
       >
-        <i className="fa-solid fa-book-open"></i>Read
+        <div>
+          <i className="fa-solid fa-book-open"></i>Read
+        </div>
       </button>
       <button
         className={activeButton === 'sent' ? 'active-btn' : ''}
@@ -61,7 +68,9 @@ export function MailBoxFilter({ filterBy, onSetFilter }) {
           setActiveButton('sent');
         }}
       >
-        <i className="fa-regular fa-paper-plane"></i>Sent
+        <div>
+          <i className="fa-regular fa-paper-plane"></i>Sent
+        </div>
       </button>
       <button
         className={activeButton === 'drafts' ? 'active-btn' : ''}
@@ -70,7 +79,9 @@ export function MailBoxFilter({ filterBy, onSetFilter }) {
           setActiveButton('drafts');
         }}
       >
-        <i className="fa-regular fa-note-sticky"></i>Drafts
+        <div>
+          <i className="fa-regular fa-note-sticky"></i>Drafts
+        </div>
       </button>
       <button
         className={activeButton === 'trash' ? 'active-btn' : ''}
@@ -79,7 +90,9 @@ export function MailBoxFilter({ filterBy, onSetFilter }) {
           setActiveButton('trash');
         }}
       >
-        <i className="fa-regular fa-trash-can filter-trash"></i> Trash
+        <div>
+          <i className="fa-regular fa-trash-can filter-trash"></i>Trash
+        </div>
       </button>
     </section>
   );

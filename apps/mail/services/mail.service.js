@@ -92,19 +92,19 @@ function getDefaultFilter(change) {
   return { ...defaultFilter, ...change };
 }
 
-function getNextMailId(bookId) {
-  return storageService.query(EMAIL_KEY).then((books) => {
-    let bookIdx = books.findIndex((book) => book.id === bookId);
-    if (bookIdx === books.length - 1) bookIdx = -1;
-    return books[bookIdx + 1].id;
+function getNextMailId(mailId) {
+  return storageService.query(EMAIL_KEY).then((mails) => {
+    let mailIdx = mails.findIndex((mail) => mail.id === mailId);
+    if (mailIdx === mails.length - 1) mailIdx = -1;
+    return mails[mailIdx + 1].id;
   });
 }
 
-function getLastMailId(bookId) {
-  return storageService.query(EMAIL_KEY).then((books) => {
-    let bookIdx = books.findIndex((book) => book.id === bookId);
-    if (bookIdx === 0) bookIdx = books.length;
-    return books[bookIdx - 1].id;
+function getLastMailId(mailId) {
+  return storageService.query(EMAIL_KEY).then((mails) => {
+    let mailIdx = mails.findIndex((mail) => mail.id === mailId);
+    if (mailIdx === 0) mailIdx = mails.length;
+    return mails[mailIdx - 1].id;
   });
 }
 

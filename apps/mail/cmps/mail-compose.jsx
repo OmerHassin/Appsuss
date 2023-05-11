@@ -7,6 +7,8 @@ export function MailCompose({ setShowCompose }) {
     to: '',
     subject: '',
     body: '',
+    isSent: true,
+    isRead: true,
   });
 
   function handleChange(event) {
@@ -19,9 +21,8 @@ export function MailCompose({ setShowCompose }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    formData.isSent = true;
-    formData.isRead = true;
-    setShowCompose(false);
+
+    // setShowCompose(false);
     mailService.save(formData).then(setShowCompose(false));
   }
 
