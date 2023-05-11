@@ -40,12 +40,20 @@ function remove(noteId) {
 }
 
 function save(note) {
-    // if (note.id) {
-    //     return storageService.put(NOTE_KEY, note)
-    // } else {
-    // }
-    return storageService.post(NOTE_KEY, note)
-}
+    return storageService
+      .query(NOTE_KEY)
+      .then((notes) => {
+        const existingMail = notes.find((item) => item.id === note.id);
+        if (existingMail) {
+          return storageService.put(NOTE_KEY, note);
+        } else {
+          return storageService.post(NOTE_KEY, note);
+        }
+      })
+      .catch((error) => {
+        console.error('Error while saving note:', error);
+      });
+  }
 
 function getEmptyNote(type) {
     return {
@@ -71,11 +79,9 @@ function _createNotes() {
             {
                 id: 'n101',
                 createdAt: 1112222,
-                type: 'NoteTxt',
+                type: 'txt',
                 isPinned: true,
-                style: {
-                    backgroundColor: '#00d'
-                },
+                backgroundColor: 'whitesmoke',
                 info: {
                     txt: 'Omer'
                 },
@@ -83,21 +89,19 @@ function _createNotes() {
             },
             {
                 id: 'n102',
-                type: 'NoteImg',
+                type: 'img',
                 isPinned: false,
                 info: {
                     url: 'http://some-img/me',
                     title: 'Bobi and Me',
                     txt: 'Fullstack Me Baby2!'
                 },
-                style: {
-                    backgroundColor: '#00d'
-                },
+                backgroundColor: 'white',
                 label: 'none',
             },
             {
                 id: 'n103',
-                type: 'NoteTodos',
+                type: 'todos',
                 isPinned: false,
                 info: {
                     title: 'Get my stuff together',
@@ -107,6 +111,7 @@ function _createNotes() {
                     ],
                     txt: 'todo me'
                 },
+                backgroundColor: 'red',
                 label: 'none',
             }   
         ]
