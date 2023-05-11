@@ -1,7 +1,6 @@
 import { MailPreview } from './mail-preview.jsx';
 
 export function MailList({ mails, onHandleDelete, onHandleStar }) {
-  console.log(onHandleDelete);
   return (
     <div>
       <ul>
