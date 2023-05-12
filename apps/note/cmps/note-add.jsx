@@ -2,11 +2,11 @@ const { useState } = React
 import { noteService } from '../services/note.service.js'
 
 export function NoteAdd({ setNotes }) {
-    const [newNoteTitle, setNewNoteTitle] = useState('')
+    const [newNoteContent, setNewNoteContent] = useState('')
     const [newNoteType, setNewNoteType] = useState('txt')
   
     function handleInputChange(event) {
-      setNewNoteTitle(event.target.value)
+      setNewNoteContent(event.target.value)
     }
   
     function handleNoteTypeChange(type) {
@@ -17,9 +17,23 @@ export function NoteAdd({ setNotes }) {
       event.preventDefault()
   
       const newNote = noteService.getEmptyNote()
-      newNote.id = noteService
-      newNote.info.title = newNoteTitle
       newNote.type = newNoteType
+      switch (newNote.type) {
+        case 'video':
+          newNote.info.url = newNoteContent
+          break
+        case 'img':
+          newNote.info.url = newNoteContent
+          break
+        case 'todos':
+          const todos = newNoteContent.split(', ')
+          newNote.info.todos = todos.map(todo => ({text: todo, done: false}))
+          console.log(newNote.info.todos);
+          break
+        default:
+          newNote.info.txt = newNoteContent
+          break
+      }
   
       noteService
         .save(newNote)
@@ -30,7 +44,7 @@ export function NoteAdd({ setNotes }) {
           console.log('Had issues posting note', err)
         })
   
-      setNewNoteTitle('')
+      setNewNoteContent('')
     }
   
     return (
@@ -38,8 +52,16 @@ export function NoteAdd({ setNotes }) {
         <div className="note-add-input-container">
           <input
             type="text"
-            placeholder="Enter a new note title"
-            value={newNoteTitle}
+            placeholder={
+                newNoteType === 'video'
+                ? 'Add YouTube URL'
+                : newNoteType === 'img'
+                ? 'Enter an image URL'
+                : newNoteType === 'todos'
+                ? `Seperate todos by ','`
+                : 'Enter a new note text'
+            }
+            value={newNoteContent}
             onChange={handleInputChange}
           />
           <div className="note-add-type-btns">
@@ -73,7 +95,7 @@ export function NoteAdd({ setNotes }) {
             </button>
           </div>
         </div>
-        <button type="submit">Add</button>
+        {/* <button type="submit">Add</button> */}
       </form>
     )
   }
