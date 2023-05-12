@@ -114,8 +114,9 @@ function _createNotes() {
                 info: {
                     title: 'Get my stuff together',
                     todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
+                        { text: 'Todo 1', done: false },
+                        { text: 'Todo 2', done: true },
+                        { text: 'Todo 3', done: false },
                     ],
                     txt: 'todo me'
                 },
@@ -127,9 +128,9 @@ function _createNotes() {
                 type: 'video',
                 isPinned: false,
                 info: {
-                    url: 'https://www.youtube.com/watch?v=NxXXSgwdLmU&ab_channel=BrianLagerstrom',
-                    title: 'Beef and Brocoli',
-                    txt: 'Great recipe kfir sent me'
+                    url: 'https://www.youtube.com/watch?v=TNhaISOUy6Q&ab_channel=Fireship',
+                    title: 'Every REACT hook',
+                    txt: 'Fireship tutorial about all hooks needed'
                 },
                 backgroundColor: '#F28B82',
                 label: 'none',
@@ -139,7 +140,7 @@ function _createNotes() {
                 type: 'video',
                 isPinned: false,
                 info: {
-                    url: 'https://www.youtube.com/watch?v=NxXXSgwdLmU&ab_channel=BrianLagerstrom',
+                    url: 'https://www.youtube.com/watch?v=iEs3qXQvg6M&ab_channel=J.KenjiL%C3%B3pez-Alt',
                     title: 'Beef and Brocoli',
                     txt: 'Great recipe kfir sent me'
                 },
@@ -163,7 +164,7 @@ function _createNotes() {
                 type: 'video',
                 isPinned: false,
                 info: {
-                    url: 'https://www.youtube.com/watch?v=NxXXSgwdLmU&ab_channel=BrianLagerstrom',
+                    url: 'https://www.youtube.com/watch?v=ZVXUcm_AuRk&ab_channel=FPLMate',
                     title: 'Fantasy Premier League!',
                     txt: 'Winning tips for the premier league season!'
                 },
@@ -189,8 +190,9 @@ function _createNotes() {
                 info: {
                     title: 'Get my stuff together',
                     todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
+                        { text: 'Todo 1', done: false },
+                        { text: 'Todo 2', done: true },
+                        { text: 'Todo 3', done: false },
                     ],
                     txt: 'todo me'
                 },
