@@ -18,7 +18,10 @@ export function MailCompose({ setShowCompose }) {
       [name]: value,
     }));
   }
-
+  function handleCancel(event) {
+    event.preventDefault();
+    setShowCompose(false);
+  }
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -31,7 +34,7 @@ export function MailCompose({ setShowCompose }) {
       <div>
         <div className="compose-header">
           <label>New Message</label>
-          <button>X</button>
+          <button onClick={handleCancel}>X</button>
         </div>
 
         <div className="compose-to-subject-div">
@@ -48,12 +51,14 @@ export function MailCompose({ setShowCompose }) {
           />
         </div>
       </div>
-      <div>
+      <div className="compose-text">
         <p className="compose-text-area">
           <textarea id="body" name="body" value={formData.body} onChange={handleChange} />
         </p>
       </div>
-      <button type="submit">Send</button>
+      <button type="submit" className="compose-submit">
+        Send
+      </button>
     </form>
   );
 }
