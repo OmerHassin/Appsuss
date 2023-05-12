@@ -22,7 +22,7 @@ export function MailDetails() {
   function loadMails() {
     mailService
       .get(mailId)
-      .then(setMail)
+      .then(setMail) // after loading the mail i can use it to update the IsRead to data
       .catch((err) => {
         console.log("Sorry couldn't find the requested mail", err);
         navigate('/mail');
