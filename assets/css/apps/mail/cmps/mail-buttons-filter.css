@@ -4,6 +4,7 @@
 
 .active-btn {
   background-color: rgb(206, 225, 255) !important;
+  font-weight: 600;
 }
 .box-filter div i {
   margin-inline-end: 0.75rem;
@@ -29,4 +30,13 @@
 .box-filter {
   display: flex;
   flex-direction: column;
+}
+.compose-btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #c3e7ff !important;
+  height: 3.4375rem !important;
+  border-radius: 10px;
+  margin-inline-start: 10px;
 }

@@ -4,6 +4,6 @@
   background-color: #f7f8fc;
   font-family: sans-serif;
   display: grid;
-  grid-template-columns: 10% 1fr 50px;
+  grid-template-columns: 15% 1fr 50px;
   height: 94vh;
 }
