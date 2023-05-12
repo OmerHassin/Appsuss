@@ -17,7 +17,7 @@
   align-items: center;
 }
 .box-filter {
-  width: 170px;
+  width: 100%;
 }
 .box-star {
   margin-inline-end: 10px !important;
