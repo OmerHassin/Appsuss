@@ -17,7 +17,7 @@ export function NoteTxt({note}) {
         noteService.save(note)
     }
 
-    return <section className="note-txt css-fix" >
+    return <section className="note-txt" >
         <h3 ref={noteTitleRef} onKeyUp={(ev) => changeContentTitle(ev)} contentEditable={true} suppressContentEditableWarning={true}>{note.info.title}</h3>
         <LongTxt txt={note.info.txt} length={100} />
         {/* <p ref={noteTxtRef} onKeyUp={(ev) => changeContent(ev)} contentEditable={true} suppressContentEditableWarning={true}>{note.info.txt}</p> */}
