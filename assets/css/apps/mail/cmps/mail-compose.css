@@ -1,0 +1,52 @@
+.compose-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0.625rem;
+  right: 3.125rem;
+  width: 30%;
+  height: 60%;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+  padding: 0.625rem;
+}
+.compose-btn {
+  width: 100%;
+  margin-block-end: 20px;
+}
+.compose-filter-box-container button {
+  background-color: #f7f8fc;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  height: 2rem;
+}
+
+.compose-item {
+  width: 98%;
+  border: none;
+  border-bottom: 0.7px solid gray;
+  outline: none;
+}
+.compose-text-area {
+  margin: 0;
+  height: 20.25rem;
+}
+.compose-text-area textarea {
+  height: 100%;
+  width: 98.5%;
+  border: none;
+}
+.compose-header {
+  height: 2rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.compose-to-subject-div {
+  margin: 0;
+}

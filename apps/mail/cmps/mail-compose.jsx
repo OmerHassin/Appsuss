@@ -3,7 +3,7 @@ import { mailService } from '../services/mail.service.js';
 const { useState } = React;
 export function MailCompose({ setShowCompose }) {
   const [formData, setFormData] = useState({
-    from: '',
+    from: 'user@appsus.com',
     to: '',
     subject: '',
     body: '',
@@ -28,21 +28,31 @@ export function MailCompose({ setShowCompose }) {
 
   return (
     <form className="compose-container" onSubmit={handleSubmit}>
-      <p className="form-item">
-        <label htmlFor="from">From</label>
-        <input type="text" id="from" name="from" value={formData.from} onChange={handleChange} placeholder="Your-Mail" />
-      </p>
-      <p className="form-item">
-        <label htmlFor="to">To</label>
-        <input type="text" id="to" name="to" value={formData.to} onChange={handleChange} />
-      </p>
-      <p className="form-item">
-        <label htmlFor="subject">Subject</label>
-        <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} />
-      </p>
-      <p className="form-text-area">
-        <textarea id="body" name="body" value={formData.body} onChange={handleChange} />
-      </p>
+      <div>
+        <div className="compose-header">
+          <label>New Message</label>
+          <button>X</button>
+        </div>
+
+        <div className="compose-to-subject-div">
+          <input className="compose-item" type="text" id="to" name="to" value={formData.to} onChange={handleChange} placeholder="To" />
+
+          <input
+            type="text"
+            className="compose-item"
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            placeholder="Subject"
+          />
+        </div>
+      </div>
+      <div>
+        <p className="compose-text-area">
+          <textarea id="body" name="body" value={formData.body} onChange={handleChange} />
+        </p>
+      </div>
       <button type="submit">Send</button>
     </form>
   );
