@@ -37,3 +37,30 @@
   cursor: pointer;
   border: 0.1px solid gray;
 }
+.save-note {
+  cursor: pointer;
+}
+.tool-tip-button {
+  position: relative;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.tool-tip-button:hover .tooltip {
+  display: block;
+}
+.corner-detail-btns {
+  display: flex;
+}
