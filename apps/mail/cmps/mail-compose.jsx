@@ -2,15 +2,18 @@ import { mailService } from '../services/mail.service.js';
 
 const { useState } = React;
 export function MailCompose({ setShowCompose }) {
+  const now = new Date();
+  const timestamp = now.getTime();
   const [formData, setFormData] = useState({
     from: 'user@appsus.com',
     to: '',
     subject: '',
     body: '',
+    sentAt: timestamp,
     isSent: true,
     isRead: true,
+    isDraft: false,
   });
-
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -20,7 +23,14 @@ export function MailCompose({ setShowCompose }) {
   }
   function handleCancel(event) {
     event.preventDefault();
-    setShowCompose(false);
+    const updatedFormData = {
+      ...formData,
+      isDraft: true,
+      isSent: false,
+    };
+    setFormData(updatedFormData);
+    console.log('Updated form data:', updatedFormData);
+    mailService.save(updatedFormData).then(() => setShowCompose(false));
   }
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,7 +44,9 @@ export function MailCompose({ setShowCompose }) {
       <div>
         <div className="compose-header">
           <label>New Message</label>
-          <button onClick={handleCancel}>X</button>
+          <button onClick={handleCancel} className="x-button">
+            X
+          </button>
         </div>
 
         <div className="compose-to-subject-div">
