@@ -1,9 +1,12 @@
+import { mailService } from '../services/mail.service.js';
+
 const { useState } = React;
-export function MailBoxModal({ setFilterByToEdit, inboxCount }) {
+
+export function MailBoxModal({ setFilterByToEdit, inboxCount, isMenuOpen }) {
   const [activeButton, setActiveButton] = useState('inbox');
 
   return (
-    <div className="box-filter">
+    <div className={`box-filter ${isMenuOpen ? 'open' : ''}`}>
       <button
         className={activeButton === 'inbox' ? 'active-btn' : ''}
         onClick={() => {

@@ -38,16 +38,18 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
-      <div className="compose-filter-box-container">
-        <button onClick={() => setShowCompose((prevState) => !prevState)} className="compose-btn">
-          <i class="fa-solid fa-pen"></i>
-          Compose
-        </button>
-        <MailBoxFilter onSetFilter={onSetFilter} filterBy={filterBy} />
-      </div>
-      <div className="search-list-container">
-        <MailSearchFilter onSetFilter={onSetFilter} filterBy={filterBy} />
-        <MailList mails={mails} onHandleDelete={onHandleDelete} onHandleStar={onHandleStar} />
+      <div className="mobile-container">
+        <div className="compose-filter-box-container">
+          <button onClick={() => setShowCompose((prevState) => !prevState)} className="compose-btn">
+            <i className="fa-solid fa-pen"></i>
+            Compose
+          </button>
+          <MailBoxFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+        </div>
+        <div className="search-list-container">
+          <MailSearchFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+          <MailList mails={mails} onHandleDelete={onHandleDelete} onHandleStar={onHandleStar} />
+        </div>
       </div>
 
       {showCompose && <MailCompose setShowCompose={setShowCompose} />}

@@ -63,11 +63,11 @@ export function MailCompose({ setShowCompose }) {
           />
         </div>
       </div>
-      <div className="compose-text">
-        <p className="compose-text-area">
-          <textarea id="body" name="body" value={formData.body} onChange={handleChange} />
-        </p>
-      </div>
+
+      <p className="compose-text-area">
+        <textarea id="body" name="body" value={formData.body} onChange={handleChange} />
+      </p>
+
       <button type="submit" className="compose-submit">
         Send
       </button>
