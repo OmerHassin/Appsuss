@@ -19,6 +19,7 @@ export function NoteTxt({note}) {
 
     return <section className="note-txt" >
         <h3 ref={noteTitleRef} onKeyUp={(ev) => changeContentTitle(ev)} contentEditable={true} suppressContentEditableWarning={true}>{note.info.title}</h3>
+        {note.info.url && <p className="note-url">From: {note.info.url}</p>}
         <LongTxt txt={note.info.txt} length={100} />
         {/* <p ref={noteTxtRef} onKeyUp={(ev) => changeContent(ev)} contentEditable={true} suppressContentEditableWarning={true}>{note.info.txt}</p> */}
     </section>
