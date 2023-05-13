@@ -137,7 +137,7 @@ function getMailDate(date) {
     // Otherwise, return the time in hours and minutes
     const hours = date.getHours() % 12 || 12;
     const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'pm' : 'am';
+    const ampm = hours >= 12 ? 'am' : 'pm';
     return `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${ampm}`;
   }
 }

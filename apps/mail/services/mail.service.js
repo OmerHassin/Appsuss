@@ -37,11 +37,17 @@ function query(filterBy = {}) {
     if (filterBy.isSent) {
       mails = mails.filter((mail) => mail.isSent);
     }
+    if (!filterBy.isSent) {
+      mails = mails.filter((mail) => !mail.isSent);
+    }
     if (filterBy.isStared) {
       mails = mails.filter((mail) => mail.isStared);
     }
     if (filterBy.isDraft) {
       mails = mails.filter((mail) => mail.isDraft);
+    }
+    if (filterBy.isDraft === false) {
+      mails = mails.filter((mail) => !mail.isDraft);
     }
     if (!filterBy.removedAt) {
       mails = mails.filter((mail) => !mail.removedAt);

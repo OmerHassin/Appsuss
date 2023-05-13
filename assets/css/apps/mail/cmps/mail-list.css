@@ -22,6 +22,8 @@ ul {
 } */
 .mail-item a {
   display: flex;
+  height: 100%;
+  align-content: center;
 }
 .mail-item {
   font-weight: 600;
