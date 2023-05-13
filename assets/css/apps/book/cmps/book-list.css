@@ -1,0 +1,47 @@
+.books-list {
+  display: grid;
+}
+.book-list {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  display: grid;
+  list-style-type: none;
+}
+
+.on-sale-sign {
+  margin-block-start: 20px;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-size: 1.875rem;
+  background-color: rgb(124, 120, 120);
+}
+.book-preview {
+  border: 1px solid rgb(113, 113, 113);
+  margin-inline-end: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  margin-block-end: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.book-preview a {
+  text-decoration: underline;
+  color: rgb(17, 149, 10);
+}
+.price-container {
+  display: flex;
+  justify-content: space-between;
+}
+.book-preview h1 {
+  align-self: center;
+}
+.red-price {
+  color: red;
+}
+.green-price {
+  color: green;
+}
+.book-img {
+  width: 99%;
+  height: fit-content;
+}

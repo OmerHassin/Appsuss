@@ -124,7 +124,7 @@ export function MailCompose({ setShowCompose }) {
       </p>
 
       <button type="submit" className="compose-submit">
-        Send
+        Send <i className="fa-regular fa-envelope"></i>
       </button>
     </form>
   );
