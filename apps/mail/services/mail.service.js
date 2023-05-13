@@ -18,6 +18,7 @@ export const mailService = {
   getNextMailId,
   getLastMailId,
   deleteToTrash,
+  updateIsRead,
 };
 
 function query(filterBy = {}) {
@@ -79,6 +80,10 @@ function deleteToTrash(mailId) {
     }
     remove(mailId);
   });
+}
+function updateIsRead(mail) {
+  mail.isRead = true;
+  return storageService.put(EMAIL_KEY, mail);
 }
 function save(mail) {
   return storageService
