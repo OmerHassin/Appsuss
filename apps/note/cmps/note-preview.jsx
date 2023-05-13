@@ -1,29 +1,29 @@
-import { NoteTxt } from './dynamic-inputs/note-txt.jsx';
-import { NoteImg } from './dynamic-inputs/note-img.jsx';
-import { NoteTodos } from './dynamic-inputs/note-todos.jsx';
-import { NoteVideo } from './dynamic-inputs/note-video.jsx';
-import { noteService } from '../services/note.service.js';
-import { mailService } from '/apps/mail/services/mail.service.js';
+import { NoteTxt } from './dynamic-inputs/note-txt.jsx'
+import { NoteImg } from './dynamic-inputs/note-img.jsx'
+import { NoteTodos } from './dynamic-inputs/note-todos.jsx'
+import { NoteVideo } from './dynamic-inputs/note-video.jsx'
+import { noteService } from '../services/note.service.js'
+import { mailService } from '/apps/mail/services/mail.service.js'
 
 const { useNavigate } = ReactRouterDOM;
-const { useState, useEffect, useRef } = React;
+const { useState, useEffect, useRef } = React
 
 export function NotePreview({ note, onRemoveNote, onDuplicateNote }) {
-  const [color, setColor] = useState(note.backgroundColor);
-  const [isPinned, setIsPinned] = useState(note.isPinned);
-  const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
-  const navigate = useNavigate();
-  const colorRef = useRef(color);
+  const [color, setColor] = useState(note.backgroundColor)
+  const [isPinned, setIsPinned] = useState(note.isPinned)
+  const [isColorPickerOpen, setIsColorPickerOpen] = useState(false)
+  const navigate = useNavigate()
+  const colorRef = useRef(color)
 
   function DynamicNoteType(note) {
     if (note.type === 'txt') {
-      return <NoteTxt note={note} />;
+      return <NoteTxt note={note} />
     } else if (note.type === 'img') {
-      return <NoteImg note={note} />;
+      return <NoteImg note={note} />
     } else if (note.type === 'todos') {
-      return <NoteTodos note={note} />;
+      return <NoteTodos note={note} />
     } else if (note.type === 'video') {
-      return <NoteVideo note={note} />;
+      return <NoteVideo note={note} />
     }
   }
   function sendAsEmail() {
@@ -37,22 +37,22 @@ export function NotePreview({ note, onRemoveNote, onDuplicateNote }) {
       from: 'user@appsus.com',
     };
     mailService.save(mappedMail).then((mail) => {
-      navigate(`/mail/compose/${mail.id}`);
+      navigate(`/mail/compose/${mail.id}`)
     });
   }
   function handlePinToggle() {
-    const updatedIsPinned = !isPinned;
-    setIsPinned(updatedIsPinned);
-    note.isPinned = updatedIsPinned;
-    noteService.save(note);
+    const updatedIsPinned = !isPinned
+    setIsPinned(updatedIsPinned)
+    note.isPinned = updatedIsPinned
+    noteService.save(note)
   }
 
   function handleChangeNoteColor(color) {
-    setColor(color);
-    colorRef.current = color;
-    note.backgroundColor = color;
-    noteService.save(note);
-    setIsColorPickerOpen(false);
+    setColor(color)
+    colorRef.current = color
+    note.backgroundColor = color
+    noteService.save(note)
+    setIsColorPickerOpen(false)
   }
 
   function handleColorPickerToggle() {
@@ -83,7 +83,9 @@ export function NotePreview({ note, onRemoveNote, onDuplicateNote }) {
         <button className="tooltip-btn" onClick={() => onRemoveNote(note.id)}>
           <i className="fas fa-trash-alt"></i>
         </button>
-        <button onClick={sendAsEmail}>Send as Email</button>
+        <button className="tooltip-btn" onClick={sendAsEmail}>
+          <i className="fas fa-envelope"></i>
+        </button>
       </section>
     </article>
   );
