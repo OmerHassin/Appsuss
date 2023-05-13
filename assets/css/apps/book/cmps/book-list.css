@@ -1,8 +1,8 @@
 .books-list {
   display: grid;
+  text-align: center;
 }
 .book-list {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
   display: grid;
   list-style-type: none;
 }
@@ -44,4 +44,53 @@
 .book-img {
   width: 99%;
   height: fit-content;
+}
+.book-buttons {
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+}
+.book-index button {
+  margin-block-end: 5px;
+  background-color: rgb(227, 248, 242);
+  border: 1px gray solid;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.book-links-container {
+  margin-block-start: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.image-review-container {
+  width: 60%;
+}
+.last-next-buttons a {
+  margin-inline-end: 30px;
+  border: 1px solid rgb(126, 122, 122);
+  font-size: 20px;
+  padding: 10px;
+}
+.last-next-buttons {
+  margin-block-start: 20px;
+}
+.book-details {
+  font-family: sans-serif;
+}
+.reviews-container {
+  width: 150px;
+  border: 1px solid gray !important;
+  border-radius: 5px;
+}
+.reviews-container .review {
+  font-size: 12px;
+  background-color: azure;
+}
+.book-top-container {
+  display: flex;
+  justify-content: space-between;
+}
+.back-arrow {
+  font-size: 40px;
+  cursor: pointer;
 }

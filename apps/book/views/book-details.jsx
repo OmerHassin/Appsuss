@@ -41,24 +41,26 @@ export function BookDetails() {
   console.log();
   return (
     <section className="book-details">
-      <button onClick={onBack}>Back</button>
-      <h1>Book Title: {book.title} </h1>
+      <div className="book-top-container">
+        <h1>Book Title: {book.title} </h1>
+
+        <i onClick={onBack} className="fa-solid fa-arrow-left back-arrow"></i>
+      </div>
       {book.listPrice.isOnSale ? <h3 className="on-sale-sign"> ON SALE!</h3> : ''}
       <div className="image-review-container">
         <img src={`${book.thumbnail}`} />
 
         <AddReview bookId={book.id} />
-
-        <div className="reviews-container">
-          {book.reviews &&
-            book.reviews.map((review) => (
-              <div className="review">
-                <p>Reviewer Name: {review.name}</p>
-                <p>Reviewer Rating: {review.rating}</p>
-                <p>Reviewer Date: {review.date}</p>
-              </div>
-            ))}
-        </div>
+      </div>
+      <div className="reviews-container">
+        {book.reviews &&
+          book.reviews.map((review) => (
+            <div className="review">
+              <p>Reviewer Name: {review.name}</p>
+              <p>Reviewer Rating: {review.rating}</p>
+              <p>Reviewer Date: {review.date}</p>
+            </div>
+          ))}
       </div>
       <p>Published Date: {book.publishedDate}</p>
       <p>Description: {book.description}</p>
