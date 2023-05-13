@@ -91,7 +91,7 @@
     font-family: sans-serif;
     /* display: grid;
     grid-template-columns: 230px 1fr 50px; */
-    height: 94vh;
+    /* height: 94vh; */
     font-size: 12px;
   }
   .search-list-container {
@@ -114,5 +114,10 @@
 @media (min-width: 800px) {
   .mail-list {
     font-size: 12px;
+  }
+}
+@media (max-width: 400px) {
+  .fa-react {
+    display: none !important;
   }
 }
