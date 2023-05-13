@@ -100,8 +100,8 @@ function _createNotes() {
                 type: 'img',
                 isPinned: false,
                 info: {
-                    url: "https://www.google.com/search?q=fpl+fantasy&tbm=isch&sxsrf=APwXEdf5LpB8xBtX9UNNUa1IRUg2HHFR4w:1683812817667&source=lnms&sa=X&ved=2ahUKEwjT1PXGs-3-AhULqaQKHfyND0sQ_AUoAnoECAEQBA&biw=1124&bih=919&dpr=1#imgrc=N4YuYRg0ewt72M",
-                    title: 'Bobi and Me',
+                    url: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT3tuC6EWkh91DJKKHa6g06r7HX4JcbckHKyLYr-FWe0_HMhM_y-pBiAlFiLV6duuF1ms9KkYvhSoDHOj0",
+                    title: 'Bobby and Me',
                     txt: 'Fullstack Me Baby2!'
                 },
                 backgroundColor: '#FBBC05',
@@ -112,13 +112,13 @@ function _createNotes() {
                 type: 'todos',
                 isPinned: false,
                 info: {
-                    title: 'Get my stuff together',
+                    title: 'To buy',
                     todos: [
-                        { text: 'Todo 1', done: false },
-                        { text: 'Todo 2', done: true },
-                        { text: 'Todo 3', done: false },
+                        { text: 'Milk', done: false },
+                        { text: 'Butter', done: true },
+                        { text: 'Potatoes', done: false },
                     ],
-                    txt: 'todo me'
+                    txt: 'For Mashed potatoes'
                 },
                 backgroundColor: '#CCFF90',
                 label: 'none',
@@ -188,13 +188,13 @@ function _createNotes() {
                 type: 'todos',
                 isPinned: false,
                 info: {
-                    title: 'Get my stuff together',
+                    title: 'Get my shit together',
                     todos: [
-                        { text: 'Todo 1', done: false },
-                        { text: 'Todo 2', done: true },
-                        { text: 'Todo 3', done: false },
+                        { text: 'Brush teeth', done: false },
+                        { text: 'Eat healty', done: true },
+                        { text: 'Sleep well', done: false },
                     ],
-                    txt: 'todo me'
+                    txt: ''
                 },
                 backgroundColor: '#CCFF90',
                 label: 'none',

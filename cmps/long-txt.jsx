@@ -19,7 +19,7 @@ export function LongTxt({ txt, length = 100 }) {
 	  <section>
 		<p ref={noteTxtRef} onKeyUp={(ev) => changeContent(ev)} contentEditable={true} suppressContentEditableWarning={true}>{showMore ? txt : trimmedTxt}</p>
 		{txt.length > length && (
-		  <button onClick={toggleShowMore}>{showMore ? 'Read less' : 'Read more'}</button>
+		  <button className="long-txt-btn" onClick={toggleShowMore}>{showMore ? 'Read less' : 'Read more'}</button>
 		)}
 	  </section>
 	)

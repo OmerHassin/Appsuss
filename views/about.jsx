@@ -2,19 +2,19 @@ export function About() {
     const teamMembers = [
         {
             name: "Omer Hassin",
-            image: "./assets/img/suzuki.jpg",
+            image: "./assets/img/lupin.jpg",
             description: "short description about Omer.",
             facebook: "https://facebook-url.com",
             linkedin: "https://linkedin-url.com",
-            github: "https://github-url.com"
+            github: "https://github.com/OmerHassin"
         },
         {
             name: "Kfir Shaked",
-            image: "./assets/img/fiat.jpg",
+            image: "./assets/img/kfir.png",
             description: "short description about Kfir.",
             facebook: "https://facebook-url.com",
             linkedin: "https://linkedin-url.com",
-            github: "https://github-url.com"
+            github: "https://github.com/kfirshaked45"
         }
     ];
 
