@@ -1,0 +1,19 @@
+.image-review-container {
+  display: flex;
+}
+.make-review {
+  border: 1px solid snow;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.make-review button {
+  background-color: rgb(186, 249, 249);
+}
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+}
+.review {
+  border: 1px solid black;
+}
