@@ -64,7 +64,8 @@
 }
 
 .tooltip-btn:hover i {
-  color: #333;
+  color: #575757;
+  scale: 1.2;
 }  
 
 .color-picker.open {
