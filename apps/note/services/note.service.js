@@ -91,7 +91,8 @@ function _createNotes() {
                 backgroundColor: '#FFF475',
                 info: {
                     title: 'Sample Text',
-                    txt: 'This is a sample text note. You can write your notes here and keep them organized. Feel free to customize the background color, pin the note, and add labels to stay organized. Happy note-taking!'
+                    txt: 'This is a sample text note. You can write your notes here and keep them organized. Feel free to customize the background color, pin the note, and add labels to stay organized. Happy note-taking!',
+                    url: 'omerhassin21@gmail.com'
                 },
                 label: 'none',
             },
