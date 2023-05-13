@@ -1,7 +1,11 @@
 import { mailService } from '../services/mail.service.js';
+const { useParams, useNavigate } = ReactRouterDOM;
 
-const { useState } = React;
+const { useState, useEffect } = React;
 export function MailCompose({ setShowCompose }) {
+  const [mail, setMail] = useState(null);
+  const { mailId } = useParams();
+  const navigate = useNavigate();
   const now = new Date();
   const timestamp = now.getTime();
   const [formData, setFormData] = useState({
@@ -14,6 +18,33 @@ export function MailCompose({ setShowCompose }) {
     isRead: true,
     isDraft: false,
   });
+  useEffect(() => {
+    if (mailId) {
+      loadMail();
+    }
+  }, []);
+  function loadMail() {
+    mailService
+      .get(mailId)
+      .then((mail) => {
+        setMail(mail);
+        setFormData({
+          from: mail.from,
+          to: mail.to,
+          subject: mail.subject,
+          body: mail.body,
+          sentAt: mail.sentAt,
+          isSent: mail.isSent,
+          isRead: mail.isRead,
+          isDraft: mail.isDraft,
+        });
+      })
+      .catch((err) => {
+        console.log("Sorry couldn't find the requested mail", err);
+        navigate('/mail');
+      });
+  }
+
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -21,29 +52,53 @@ export function MailCompose({ setShowCompose }) {
       [name]: value,
     }));
   }
+
   function handleCancel(event) {
     event.preventDefault();
-    const updatedFormData = {
-      ...formData,
-      isDraft: true,
-      isSent: false,
-    };
-    setFormData(updatedFormData);
-    console.log('Updated form data:', updatedFormData);
-    mailService.save(updatedFormData).then(() => setShowCompose(false));
+
+    // If there is no mail, save the form data as a draft
+    if (!mail) {
+      const updatedFormData = {
+        ...formData,
+        isDraft: true,
+        isSent: false,
+      };
+      setFormData(updatedFormData);
+      mailService.save(updatedFormData).then(() => setShowCompose(false));
+    } else {
+      // If there is mail, update it as a draft
+      const updatedMail = {
+        ...mail,
+        ...formData,
+        isDraft: true,
+        isSent: false,
+      };
+      mailService.save(updatedMail).then(() => navigate('/mail'));
+    }
   }
+
   function handleSubmit(event) {
     event.preventDefault();
 
-    // setShowCompose(false);
-    mailService.save(formData).then(setShowCompose(false));
+    const updatedFormData = {
+      ...formData,
+      sentAt: timestamp,
+      isDraft: false,
+      isSent: true,
+    };
+
+    if (mail) {
+      mailService.save(updatedFormData).then(() => navigate(`/mail`));
+    } else {
+      mailService.save(updatedFormData).then(() => setShowCompose(false));
+    }
   }
 
   return (
     <form className="compose-container" onSubmit={handleSubmit}>
       <div>
         <div className="compose-header">
-          <label>New Message</label>
+          <label>{mail ? 'Edit Message' : 'New Message'}</label>
           <button onClick={handleCancel} className="x-button">
             X
           </button>

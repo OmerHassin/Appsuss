@@ -10,7 +10,7 @@ export function MailDetails() {
   const { mailId } = useParams();
   const [lastMailId, setLastMailId] = useState(null);
   const [nextMailId, setNextMailId] = useState(null);
-  console.log(mail);
+
   const navigate = useNavigate();
 
   function loadNextId() {
@@ -20,7 +20,7 @@ export function MailDetails() {
     mailService.getLastMailId(mailId).then(setLastMailId);
   }
 
-  function loadMails() {
+  function loadMail() {
     mailService
       .get(mailId)
       .then(setMail) // after loading the mail i can use it to update the IsRead to data
@@ -30,7 +30,7 @@ export function MailDetails() {
       });
   }
   useEffect(() => {
-    loadMails();
+    loadMail();
     loadNextId();
     loadLastId();
   }, [mailId]);
@@ -39,10 +39,12 @@ export function MailDetails() {
     navigate('/mail');
   }
   function onNext() {
-    console.log(nextMailId);
     if (nextMailId) {
       navigate(`/mail/${nextMailId}`);
     }
+  }
+  function onEdit() {
+    navigate(`/mail/compose/${mail.id}`);
   }
 
   function onLast() {
@@ -50,6 +52,7 @@ export function MailDetails() {
       navigate(`/mail/${lastMailId}`);
     }
   }
+
   return (
     <div className="mail-details">
       <div className="mail-details-top">
@@ -77,6 +80,11 @@ export function MailDetails() {
             onNext();
           }}
         ></i>
+        {mail.isDraft && (
+          <button className="mail-details-edit" onClick={onEdit}>
+            Edit
+          </button>
+        )}
       </div>
     </div>
   );
