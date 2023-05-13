@@ -18,7 +18,6 @@ export function MailIndex() {
   function onHandleDelete(mailId) {
     mailService.deleteToTrash(mailId).then((mail) => {
       setMails((prevData) => [...prevData.filter((mail) => mail.id !== mailId)]);
-      console.log(mail);
     });
   }
   function onHandleStar(mail) {

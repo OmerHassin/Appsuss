@@ -28,3 +28,12 @@
   display: flex;
   justify-content: space-between;
 }
+.mail-details-edit {
+  background-color: inherit;
+  border: none;
+  margin-inline-start: 2rem;
+}
+.mail-details-edit:hover {
+  cursor: pointer;
+  border: 0.1px solid gray;
+}

@@ -12,6 +12,8 @@
   padding-inline-start: 1.5rem;
   border-radius: 20px;
   align-items: center;
+
+  height: 2.5rem;
 }
 .box-filter {
   width: 100%;
