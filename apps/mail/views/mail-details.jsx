@@ -39,7 +39,9 @@ export function MailDetails() {
     newNote.info.txt = mail.body;
     newNote.info.url = mail.from;
     newNote.type = 'txt';
-    noteService.save(newNote);
+    noteService.save(newNote).then(() => {
+      navigate('/note');
+    });
   }
   useEffect(() => {
     loadMail();
@@ -89,18 +91,26 @@ export function MailDetails() {
       </div>
       <p>{mail.body}</p>
       <div className="mail-details-bottom">
-        <i
-          className="fa-solid fa-angle-left"
-          onClick={() => {
-            onLast();
-          }}
-        ></i>
-        <i
-          className="fa-solid fa-angle-right"
-          onClick={() => {
-            onNext();
-          }}
-        ></i>
+        <div class="tool-tip-button">
+          <i
+            className="fa-solid fa-angle-left"
+            onClick={() => {
+              onLast();
+            }}
+          ></i>
+
+          <span class="tooltip">Last Mail</span>
+        </div>
+        <div class="tool-tip-button">
+          <i
+            className="fa-solid fa-angle-right"
+            onClick={() => {
+              onNext();
+            }}
+          ></i>
+
+          <span class="tooltip">Next Mail</span>
+        </div>
         {mail.isDraft && (
           <button className="mail-details-edit" onClick={onEdit}>
             Edit

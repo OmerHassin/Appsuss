@@ -5,7 +5,9 @@
   margin-inline-start: 10px;
   margin-inline-end: 10px;
 }
-
+.mail-details-bottom {
+  display: flex;
+}
 .mail-details-bottom i {
   margin-inline-start: 10px;
   margin-block-start: 20px;
@@ -32,6 +34,7 @@
   background-color: inherit;
   border: none;
   margin-inline-start: 2rem;
+  margin-block-start: 20px;
 }
 .mail-details-edit:hover {
   cursor: pointer;
