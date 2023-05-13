@@ -40,6 +40,7 @@ export function MailIndex() {
     <section className="mail-index">
       <div className="compose-filter-box-container">
         <button onClick={() => setShowCompose((prevState) => !prevState)} className="compose-btn">
+          <i class="fa-solid fa-pen"></i>
           Compose
         </button>
         <MailBoxFilter onSetFilter={onSetFilter} filterBy={filterBy} />

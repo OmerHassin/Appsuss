@@ -49,6 +49,9 @@ function query(filterBy = {}) {
     if (filterBy.removedAt) {
       mails = mails.filter((mail) => mail.removedAt);
     }
+
+    mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt);
+
     return mails;
   });
 }
@@ -158,7 +161,7 @@ function _createEmails() {
         subject: 'Donation Confirmation',
         body: 'Thank you for your generous donation to our charity organization. Your contribution will help us make a positive impact in our community. We appreciate your support!',
         isRead: true,
-        sentAt: 1672569600000,
+        sentAt: 1665459200000,
         removedAt: null,
         from: 'donations@charity.org',
         to: 'user@appsus.com',
@@ -168,7 +171,7 @@ function _createEmails() {
         subject: 'Happy Birthday!',
         body: 'Wishing you a very happy birthday filled with joy and laughter. May all your dreams and wishes come true! Cheers to another year of life!',
         isRead: false,
-        sentAt: 1684262400000,
+        sentAt: 1673459200000,
         removedAt: null,
         from: 'friends@celebrate.com',
         to: 'user@appsus.com',
@@ -178,7 +181,7 @@ function _createEmails() {
         subject: 'Important Information Regarding Your Account',
         body: 'Dear user, we have detected suspicious activity on your account. Please log in to your account immediately to verify your identity and secure your information. Thank you for your cooperation.',
         isRead: false,
-        sentAt: 1695696000000,
+        sentAt: 1623459200000,
         removedAt: null,
         from: 'security@company.com',
         to: 'user@appsus.com',
@@ -188,7 +191,7 @@ function _createEmails() {
         subject: 'Congratulations on Your Promotion!',
         body: 'Dear [Name], congratulations on your recent promotion to [Position]! Your hard work and dedication have paid off and we are excited to see what you will achieve in your new role. Best wishes!',
         isRead: true,
-        sentAt: 1706380800000,
+        sentAt: 1683459200000,
         removedAt: null,
         from: 'manager@company.com',
         to: 'user@appsus.com',

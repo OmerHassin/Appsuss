@@ -1,5 +1,6 @@
 import { func } from 'prop-types';
 import { mailService } from '../services/mail.service.js';
+import { MailBoxFilter } from '../cmps/mail-box-filter.jsx';
 
 const { useEffect, useState } = React;
 const { useParams, useNavigate, Link } = ReactRouterDOM;
@@ -9,7 +10,7 @@ export function MailDetails() {
   const { mailId } = useParams();
   const [lastMailId, setLastMailId] = useState(null);
   const [nextMailId, setNextMailId] = useState(null);
-
+  console.log(mail);
   const navigate = useNavigate();
 
   function loadNextId() {
@@ -37,16 +38,46 @@ export function MailDetails() {
   function onBack() {
     navigate('/mail');
   }
+  function onNext() {
+    console.log(nextMailId);
+    if (nextMailId) {
+      navigate(`/mail/${nextMailId}`);
+    }
+  }
+
+  function onLast() {
+    if (lastMailId) {
+      navigate(`/mail/${lastMailId}`);
+    }
+  }
   return (
-    <div>
-      <h2>{mail.subject}</h2>
+    <div className="mail-details">
       <div className="mail-details-top">
-        <p>From: {mail.from}</p>
-        <p>To: {mail.to}</p>
+        <h2>{mail.subject}</h2>
+        <i className="fa-solid fa-arrow-left" onClick={() => onBack()}></i>
+      </div>
+      <div className="mail-details-top-container">
+        <div>
+          <p className="mail-details-from">From: {mail.from}</p>
+          <p className="mail-details-to">To: {mail.to}</p>
+        </div>
         <p>{new Date(mail.sentAt).toLocaleString()}</p>
       </div>
-      <i className="fa-solid fa-arrow-left" onClick={() => onBack()}></i>
       <p>{mail.body}</p>
+      <div className="mail-details-bottom">
+        <i
+          className="fa-solid fa-angle-left"
+          onClick={() => {
+            onLast();
+          }}
+        ></i>
+        <i
+          className="fa-solid fa-angle-right"
+          onClick={() => {
+            onNext();
+          }}
+        ></i>
+      </div>
     </div>
   );
 }
