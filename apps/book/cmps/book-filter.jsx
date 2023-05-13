@@ -1,7 +1,7 @@
 import { bookService } from '../services/book.service.js';
 
 const { useState, useEffect } = React;
-
+const { useParams, useNavigate, Link } = ReactRouterDOM;
 export function BookFilter({ filterBy, onSetFilter }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy);
 
@@ -27,16 +27,19 @@ export function BookFilter({ filterBy, onSetFilter }) {
       <h2>Filter Our Books</h2>
 
       <form onSubmit={onSubmitFilter}>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="title">Name:</label>
         <input value={title} onChange={handleChange} name="title" id="title" type="text" placeholder="By Name" />
         <label htmlFor="price">Price:</label>
         <input value={price} onChange={handleChange} type="number" name="price" id="price" placeholder="By Price" />
-        <select for="sale" name="sale" onChange={handleChange}>
+        <select htmlFor="sale" name="sale" onChange={handleChange}>
           <option value="all">All</option>
           <option value="available">For Sale</option>
           <option value="sold">Sold</option>
         </select>
         <button>Filter Books</button>
+        <Link to="/book/edit" className="add-book">
+          Add Book
+        </Link>
       </form>
     </section>
   );
